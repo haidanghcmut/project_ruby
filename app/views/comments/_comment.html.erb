@@ -9,8 +9,7 @@
     <%= comment.body %>
 </p>
 
-   <div> 
-        <%= form.label :status%> <br>
-        <%= form.select :status, ['public', 'private', 'archived'], selected: 'public'%>
-    </div>
+    <p>
+    <%= button_to "Destroy" , [comment.article, comment], method: :delete%>
+    </p>
 <%end%>
