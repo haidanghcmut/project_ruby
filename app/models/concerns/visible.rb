@@ -1,24 +1,25 @@
+# frozen_string_literal: true
+
 module Visible
-    extend ActiveSupport::Concern
-    VALID_STATUSES = ['public', 'private', 'archived']
-    included do 
-        validates :status, inclusion: { in: VALID_STATUSES }
-    end
-    
-    class_methods do
-        def public_count
-            where(status: 'public').count
-        end
+  extend ActiveSupport::Concern
+  VALID_STATUSES = %w[public private archived].freeze
+  included do
+    validates :status, inclusion: { in: VALID_STATUSES }
+  end
 
-        def private_count
-            where(status: 'private').count
-        end
+  class_methods do
+    def public_count
+      where(status: 'public').count
     end
 
-    
-
-    def archived?
-      status == 'archived'
+    def private_count
+      where(status: 'private').count
     end
+  end
+
+
+
+  def archived?
+    status == 'archived'
+  end
 end
-  
