@@ -1,0 +1,15 @@
+<%unless comment.archived?%>
+<p>
+    <strong>Commenter:</strong>
+    <%= comment.commenter %>
+</p>
+
+<p>
+    <strong>Comments</strong>
+    <%= comment.body %>
+</p>
+
+    <p>
+    <%= button_to "Destroy" , [comment.article, comment], method: :delete%>
+    </p>
+<%end%>
